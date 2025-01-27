@@ -11,3 +11,4 @@ jobs:
               run: |
                   python -V
                   pip -V
+                  python --version
