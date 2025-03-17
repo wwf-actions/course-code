@@ -30,4 +30,4 @@ jobs:
               run: echo "::add-mask::Secret String"
 
             - name: Echo a secret
-              run: echo "Hello World"
+              run: echo "Secret String"
