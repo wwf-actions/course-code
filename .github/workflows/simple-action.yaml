@@ -11,4 +11,4 @@ jobs:
               with: 
                 who-to-greet: Python
             - name: Log Greeting Time
-              run: echo "${{ inputs.who-to-greet }}"        
+              run: echo "${{steps.greet.outputs.time}}"        
