@@ -41,7 +41,7 @@ jobs:
 
 
             - name: Python Shell
-              shell: python           # weriding step level
+              shell: python           # overriding step level
               run: |
                 import platform
                 print(platform.processor())
