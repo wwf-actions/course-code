@@ -1,0 +1,43 @@
+name: Repository Events 2
+on: 
+    push:
+        # Filtering by baranches
+        branches:
+            - main
+            - "feature/*"           # this is going to match feature slash something 
+            - "feature/**"          # feature/** will also match this feature/something/something-else
+            - "!feature/featA"      # this will ignore feature/featA exclude workflow run for this branch and excluded branch should be written in the end of the list
+            # branches-ignore will ignore the branches, You cannot use both the branch and branch-ignore filters for the same event in a workkflow
+        branches-ignore: 
+            - develop        # this is going to ignore develop slash something will not trigger the workflow
+
+        # Filtering by tags
+        tags:
+            - v1.*   # this is going to match v1.0.0, v1.0.1, v1.1.0, v1.1.1 and so on
+            - "!v1.1.1"  # this will ignore v1.1.1 exclude workflow run for this tag and excluded tag should be written in the end of the list
+        # filtering by paths`
+        paths:
+            - "**.js"   # this will match any file ending with .js
+            - "!app.js"  # this will ignore app.js exclude workflow run for this file and excluded file should be written in the end of the list
+    pull_request:
+        types: [opened, assigned, reopened]
+        branches:
+            - main
+        paths:
+            - "**.js"    # the workflow will run only if the pull request contains any file ending with .js
+    issues:
+        types: [opened]
+        
+jobs:
+    checkout-test:
+        runs-on: ubuntu-latest
+        steps:
+            - run: |
+                echo $GITHUB_SHA
+                echo $GITHUB_REF
+            - uses: actions/checkout@v3
+
+
+
+# if you write branches tags and paths in the same event the workflow will run when all the conditions are met
+# tags are not applicable to pull requests

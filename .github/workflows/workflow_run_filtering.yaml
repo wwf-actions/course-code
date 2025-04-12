@@ -1,0 +1,12 @@
+name: Workflow Run
+on:
+    workflow_run:
+        workflows: [Repository Events 2]
+        types: [completed]
+        branches:
+            - main       # this will trigger workflow run if Repository Events 2 is completed on main branch
+jobs:
+    echo-string:
+      runs-on: ubuntu-latest
+      steps:
+        -  run: echo "I was triggered because 'Repository Events 2' was completed."
