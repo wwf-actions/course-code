@@ -8,8 +8,8 @@ on:
             - "feature/**"          # feature/** will also match this feature/something/something-else
             - "!feature/featA"      # this will ignore feature/featA exclude workflow run for this branch and excluded branch should be written in the end of the list
             # branches-ignore will ignore the branches, You cannot use both the branch and branch-ignore filters for the same event in a workkflow
-        branches-ignore: 
-            - develop        # this is going to ignore develop slash something will not trigger the workflow
+        # branches-ignore: 
+        #     - develop        # this is going to ignore develop slash something will not trigger the workflow
 
         # Filtering by tags
         tags:
